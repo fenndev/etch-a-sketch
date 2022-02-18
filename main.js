@@ -1,9 +1,14 @@
 /* Global Variables */ 
 
 let sketchBox = document.querySelector(".sketch-container");
+let resetButton = document.querySelector(".reset-btn");
 let sketchSize = 960;
 
 /* Event Listeners */
+
+resetButton.addEventListener('click', () => {
+    resetSketch();
+});
 
 /* Main Code */
 
@@ -28,7 +33,19 @@ function addDivs(divNum) {
 }
 
 function hoverChange(divToChange) {
+    divToChange.classList.add("added");
     divToChange.style.backgroundColor = 'green';
+}
+
+function resetSketch() {
+    let addedDivs = document.querySelectorAll(".added");
+    console.log(addedDivs);
+    addedDivs.forEach(selectedDiv => {
+            console.log(selectedDiv);
+            let addedDivStyle = selectedDiv.style;
+            console.log(addedDivStyle);
+            addedDivStyle.backgroundColor = 'white';
+    });
 }
 
 addDivs(24);
