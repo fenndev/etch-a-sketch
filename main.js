@@ -7,10 +7,6 @@ let sketchSize = 960;
 
 /* Main Code */
 
-function onLoad() {
-    
-}
-
 function addDivs(divNum) {
     let counter = 0;
     let sketchStyle = sketchBox.style;
@@ -21,6 +17,9 @@ function addDivs(divNum) {
     do {
         counter++;
         let newDiv = document.createElement("div");
+        newDiv.addEventListener('mouseover', () => {
+            hoverChange(newDiv);
+        });
         let divStyle = newDiv.style;
         divStyle.height = `${divSize}px`;
         divStyle.width = `${divSize}px`;
@@ -28,4 +27,8 @@ function addDivs(divNum) {
     } while(counter < (divNum * divNum));
 }
 
-addDivs(15);
+function hoverChange(divToChange) {
+    divToChange.style.backgroundColor = 'green';
+}
+
+addDivs(24);
