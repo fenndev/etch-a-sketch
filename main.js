@@ -2,7 +2,7 @@
 
 let sketchBox = document.querySelector(".sketch-container");
 let resetButton = document.querySelector(".reset-btn");
-let sketchSize = 960;
+let sketchSize = 800;
 
 /* Event Listeners */
 
@@ -49,7 +49,7 @@ function resetSketch() {
 
 function promptForNewGrid() {
     let gridDivNums = +prompt("How many squares per side of the new grid? Must be less than 100.");
-    if(gridDivNums != undefined && !isNaN(gridDivNums)) {
+    if(gridDivNums != undefined && !isNaN(gridDivNums) && Number.isInteger(gridDivNums)) {
         if(gridDivNums <= 0) {
             alert("Must be greater than 0.");
             promptForNewGrid();
