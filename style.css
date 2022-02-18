@@ -1,3 +1,5 @@
+/* Global Styles */ 
+
 * {
     margin: 0;
     padding: 0;
@@ -10,6 +12,8 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+/* Project Body Styling */
+
 .container {
     height: 100%;
     width: 100%;
@@ -17,19 +21,24 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    background-color: #4abdac;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 .sketch-container {
     display: flex;
     flex-flow: row wrap;
-    border: 4px #DFDCe3 solid;
+    border: 16px red solid;
+    border-bottom: 128px red solid;
+    border-radius: 20px;
+    background-color: #DFDCE3;
 }
+
+/* Element Styling */
 
 .reset-btn {
     padding: 15px 50px;
-    background-color: #FC4A1A;
+    background-color: red;
     color: white;
     border: none;
     border-radius: 15px;
@@ -43,4 +52,8 @@ body {
 
 .title {
     font-size: 48px;
+}
+
+.red-text {
+    color: red;
 }
