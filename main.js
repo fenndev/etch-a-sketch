@@ -15,18 +15,15 @@ resetButton.addEventListener('click', () => {
 addDivs(16);
 
 function addDivs(divNum) {
-    console.log(divNum);
     let counter = 0;
     let sketchStyle = sketchBox.style;
     sketchStyle.height = `${sketchSize}px`;
     sketchStyle.width = `${sketchSize}px`;
     let divSize = ((sketchSize / (divNum * divNum)) * divNum);
-    console.log(divSize);
     do {
         counter++;
         let newDiv = document.createElement("div");
         newDiv.classList.add("added");
-        console.log(newDiv);
         newDiv.addEventListener('mouseover', () => {
             hoverChange(newDiv);
         });
@@ -52,7 +49,6 @@ function resetSketch() {
 
 function promptForNewGrid() {
     let gridDivNums = +prompt("How many squares per side of the new grid? Must be less than 100.");
-    console.log(gridDivNums);
     if(gridDivNums != undefined && !isNaN(gridDivNums)) {
         if(gridDivNums <= 0) {
             alert("Must be greater than 0.");
@@ -66,7 +62,6 @@ function promptForNewGrid() {
             addDivs(gridDivNums);
     }
     else {
-        console.log("I'm running!");
         alert("Must be a valid number.");
         promptForNewGrid();
     }
