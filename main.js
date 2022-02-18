@@ -38,7 +38,8 @@ function addDivs(divNum) {
 }
 
 function hoverChange(divToChange) {
-    divToChange.style.backgroundColor = 'green';
+    let randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+    divToChange.style.backgroundColor = randomColor;
 }
 
 function resetSketch() {
