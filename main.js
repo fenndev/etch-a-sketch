@@ -2,6 +2,7 @@
 
 let sketchBox = document.querySelector(".sketch-container");
 let resetButton = document.querySelector(".reset-btn");
+let playButton = document.querySelector(".play-btn");
 
 /* Event Listeners */
 
@@ -9,11 +10,18 @@ resetButton.addEventListener('click', () => {
     resetSketch();
 });
 
+playButton.addEventListener('click', () => {
+    playGame();
+});
+
+
+
 /* Main Code */
 
-playGame();
-
 function playGame() {
+    sketchBox.classList.remove("hidden");
+    resetButton.classList.remove("hidden");
+    playButton.classList.add("hidden");
     let sketchSize = setSketchSize();
     let divNums = promptForGrid();
     addDivs(divNums, sketchSize);
