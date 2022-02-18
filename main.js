@@ -12,16 +12,21 @@ resetButton.addEventListener('click', () => {
 
 /* Main Code */
 
+addDivs(16);
+
 function addDivs(divNum) {
+    console.log(divNum);
     let counter = 0;
     let sketchStyle = sketchBox.style;
     sketchStyle.height = `${sketchSize}px`;
     sketchStyle.width = `${sketchSize}px`;
     let divSize = ((sketchSize / (divNum * divNum)) * divNum);
-
+    console.log(divSize);
     do {
         counter++;
         let newDiv = document.createElement("div");
+        newDiv.classList.add("added");
+        console.log(newDiv);
         newDiv.addEventListener('mouseover', () => {
             hoverChange(newDiv);
         });
@@ -33,19 +38,35 @@ function addDivs(divNum) {
 }
 
 function hoverChange(divToChange) {
-    divToChange.classList.add("added");
     divToChange.style.backgroundColor = 'green';
 }
 
 function resetSketch() {
     let addedDivs = document.querySelectorAll(".added");
-    console.log(addedDivs);
     addedDivs.forEach(selectedDiv => {
-            console.log(selectedDiv);
-            let addedDivStyle = selectedDiv.style;
-            console.log(addedDivStyle);
-            addedDivStyle.backgroundColor = 'white';
+        selectedDiv.remove();
     });
+    promptForNewGrid();
 }
 
-addDivs(24);
+function promptForNewGrid() {
+    let gridDivNums = +prompt("How many squares per side of the new grid? Must be less than 100.");
+    console.log(gridDivNums);
+    if(gridDivNums != undefined && !isNaN(gridDivNums)) {
+        if(gridDivNums <= 0) {
+            alert("Must be greater than 0.");
+            promptForNewGrid();
+        }
+        else if(gridDivNums >= 100) {
+            alert("Must be less than 100.");
+            promptForNewGrid();
+        }
+        else
+            addDivs(gridDivNums);
+    }
+    else {
+        console.log("I'm running!");
+        alert("Must be a valid number.");
+        promptForNewGrid();
+    }
+}
