@@ -28,13 +28,10 @@ function playGame() {
 }
 
 function setSketchSize() {
-    let newSketchSize = +prompt("What size should the sketch body be? Must be larger than 300px but smaller than 701px.");
+    let newSketchSize = +prompt("What size should the sketch body be? Must be larger than 400px but smaller than 701px.");
     if(newSketchSize != undefined && !isNaN(newSketchSize) && Number.isInteger(newSketchSize)) {
-        if(newSketchSize % 2 != 0 || newSketchSize % 5 != 0) {
-            alert("Must be an even number or divisible by 5!");
-            setSketchSize();
-        }
-        else if(newSketchSize > 700) {
+        console.log(newSketchSize);
+        if(newSketchSize > 700) {
             alert("Must be smaller than 700px.");
             setSketchSize();
         }
@@ -54,7 +51,7 @@ function addDivs(divNum, sketchSize) {
     sketchStyle.height = `${sketchSize}px`;
     sketchStyle.width = `${sketchSize}px`;
     let divSize = ((sketchSize / (divNum * divNum)) * divNum);
-    do {
+    while(counter < (divNum * divNum)) {
         counter++;
         let newDiv = document.createElement("div");
         newDiv.classList.add("added");
@@ -67,7 +64,7 @@ function addDivs(divNum, sketchSize) {
         divStyle.backgroundColor = 'Black';
         divStyle.opacity = 0;
         sketchBox.appendChild(newDiv);
-    } while(counter < (divNum * divNum));
+    } ;
 }
 
 function hoverChange(divToChange) {
@@ -80,7 +77,7 @@ function resetSketch() {
     addedDivs.forEach(selectedDiv => {
         selectedDiv.remove();
     });
-    promptForGrid();
+    playGame();
 }
 
 function promptForGrid() {
